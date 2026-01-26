@@ -4,6 +4,6 @@
 
 *DoodleAssist* is an interactive and progressive line art generation system controlled by sketches and prompts, which helps both experts and novices concretize their design intentions or explore possibilities.
 
-<img src='docs/figures/teaser2.png'>
+<img src='docs/figures/teaser3.png'>
 
 
