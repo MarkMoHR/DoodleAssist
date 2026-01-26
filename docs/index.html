@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>DoodleAssist: Progressive Interactive Line Art Generation with Latent Distribution Alignment</title>
+
+  <link href="./assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<!-- === Header Ends === -->
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+    <div class="title">
+      <b>DoodleAssist: Progressive Interactive Line Art Generation</b>
+      <br>
+      <b>with Latent Distribution Alignment</b>
+    </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="http://mo-haoran.com/" target="_blank">Haoran Mo</a><sup>1</sup>,&nbsp;
+    <a href="https://yulinshen.com/" target="_blank">Yulin Shen</a><sup>1</sup>,&nbsp;
+    <a href="https://esslab.jp/~ess/en/" target="_blank">Edgar Simo-Serra</a><sup>2</sup>,&nbsp;
+    <a href="https://cislab.hkust-gz.edu.cn/members/zeyu-wang/" target="_blank">Zeyu Wang</a><sup>1,3</sup>
+  </div>
+  <div class="institution">
+    <sup>1</sup>The Hong Kong University of Science and Technology (Guangzhou),&nbsp;
+    <sup>2</sup>Waseda University,&nbsp;
+    <br>
+    <sup>3</sup>The Hong Kong University of Science and Technology
+  </div>
+  <br>
+  <div class="institution">
+    Accepted by <a href="https://www.computer.org/csdl/journals/tg" target="_blank">IEEE Transactions on Visualization and Computer Graphics</a>
+    <br>
+    (TVCG 2025)
+  </div>
+  <div class="link">
+    <a href="https://cislab.hkust-gz.edu.cn/media/documents/TVCG_DoodleAssist_final.pdf" target="_blank">[Paper]</a>&nbsp;
+    <a href="https://ieeexplore.ieee.org/abstract/document/11216020" target="_blank">[Paper (IEEE)]</a>&nbsp;
+    <a href="https://github.com/MarkMoHR/DoodleAssist" target="_blank">[Code]</a>
+  </div>
+  <div class="teaser">
+    <img src="figures/teaser.png" style="width: 100%;">
+    <br>
+    <br>
+    <font size="3">
+      Workflow of our interactive and progressive line art generation system DoodleAssist, and its performance on diverse generation.
+      (a) The progressive process generates or updates designated regions (in pink) step by step according to drawn or modified strokes in the sketches,
+      while ensuring smooth transition with those unchanged regions. The actions at each step are shown with color coding.
+      (b) The system can be applied to synthesize diverse line art images, such as single characters, animals, objects, multiple characters, and complex scenes.
+    </font>
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+  <div class="title">Abstract</div>
+  <div class="body">
+    Creating high-quality line art in a fast and controlled manner plays a crucial role in anime production and concept design. We present DoodleAssist, an interactive and progressive line art generation system controlled by sketches and prompts, which helps both experts and novices concretize their design intentions or explore possibilities. Built upon a controllable diffusion model, our system performs progressive generation based on the last generated line art, synthesizing regions corresponding to drawn or modified strokes while keeping the remaining ones unchanged. To facilitate this process, we propose a latent distribution alignment mechanism to enhance the transition between the two regions and allow seamless blending, thereby alleviating issues of region incoherence and line discontinuity. Finally, we also build a user interface that allows the convenient creation of line art through interactive sketching and prompts. Qualitative and quantitative comparisons against existing approaches and an in-depth user study demonstrate the effectiveness and usability of our system. Our system can benefit various applications such as anime concept design, drawing assistant, and creativity support for children.
+  </div>
+  <div class="link">
+    <a href="https://cislab.hkust-gz.edu.cn/media/documents/TVCG_DoodleAssist_final.pdf" target="_blank">[Paper]</a>&nbsp; &nbsp;
+    <a href="https://ieeexplore.ieee.org/abstract/document/11216020" target="_blank">[Paper (IEEE)]</a>&nbsp; &nbsp;
+    <a href="https://markmohr.github.io/files/projects/TVCG_DoodleAssist_supplementary.pdf" target="_blank">[Supplementary]</a>&nbsp; &nbsp;
+    <a href="https://github.com/MarkMoHR/DoodleAssist" target="_blank">[Code]</a>&nbsp; &nbsp;
+  </div>
+</div>
+<!-- === Overview Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Method</div>
+  <br>
+  <div class="body">
+    <p style="text-align:center; font-size:23px; font-weight:bold">Framework Overview<p>
+    <img src="figures/framework6.png" width="100%">
+    <br>
+    <br>
+    <font size="4">
+      Framework of our progressive line art generation system DoodleAssist. (a) It is built by applying a controllable diffusion model iteratively to update
+intended regions for incoming or modified strokes. (b) Regional latent blending enables the progressive process with region control, which accounts for noise
+prediction and denoising in the intended region M. The remaining region 1−M is replaced with a known latent from the last generated line art. (c) A latent
+distribution alignment mechanism is proposed to improve transitions between the two regions. Newly added or modified strokes are highlighted in red. Masks
+in pink indicate the intended regions.
+    </font>
+    <br>
+    <br>
+
+    <p style="text-align:center; font-size:23px; font-weight:bold">
+      Overall Introduction
+    <p>
+    <p style="text-align:center; font-size:20px">
+      (Or watch on <a href="https://www.bilibili.com/video/BV1GQz8BqEXE/" target="_blank">Bilibili</a>)
+      <br>
+      👇
+    <p>
+    <div style="position: relative; padding-top: 50%; text-align: center;">
+      <iframe src="https://www.youtube.com/embed/7qbFfR3f8fY" frameborder=0
+              style="position: absolute; top: 1%; left: 10%; width: 80%; height: 100%;"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen></iframe>
+    </div>
+
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Results</div>
+  <div class="body">
+
+    <p style="margin-top: 10pt; text-align:center; font-size:23px; font-weight:bold">Result Gallery<p>
+    <img src="figures/insight-performance-compare5.png" width="100%">
+    <br>
+    <br>
+    <font size="4">
+      Support for different creation workflows of participants in the user study. We plot their different actions along a timeline using color coding. The
+four results of each participant correspond to the orders on the timeline.
+    </font>
+    <br>
+    <br>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:23px; font-weight:bold">Comparisons 1<p>
+    <img src="figures/results-comparisons3.png" width="100%">
+    <br>
+    <br>
+    <font size="4">
+      Comparisons with line art generation methods based on complete or iterative sketches.
+      Newly added strokes are highlighted in red.
+    </font>
+    <br>
+    <br>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:23px; font-weight:bold">Comparisons 2<p>
+    <img src="figures/user-study-intention2.png" width="100%">
+    <br>
+    <br>
+    <font size="4">
+      User study of iterative sketch to line art generation between Block-and-Detail system and ours. Newly added or modified strokes are highlighted
+in red. Blue drawings underneath are the last generated images.
+    </font>
+
+
+
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<!-- <div class="section">
+  <div class="title">Presentations</div>
+  <div class="body">
+
+    <p style="margin-top: 10pt; text-align:center; font-size:23px; font-weight:bold">
+      3-5 minute presentation
+    <p>
+    <p style="text-align:center; font-size:20px">
+      (Or watch on <a href="https://www.bilibili.com/video/BV1S3411q7VX/" target="_blank">Bilibili</a>)
+      <br>
+      👇
+    <p>
+    <div style="position: relative; padding-top: 50%; text-align: center;">
+      <iframe src="https://www.youtube.com/embed/BSJN1ixacts" frameborder=0
+              style="position: absolute; top: 1%; left: 5%; width: 90%; height: 100%;"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+    <br>
+
+    <div class="link">
+      👉 15-20 minute presentation:
+      <a href="https://youtu.be/D_U4e1qh5qc" target="_blank">[YouTube]</a>
+      <a href="https://www.bilibili.com/video/BV1uU4y1E7Wg/" target="_blank">[Bilibili]</a>
+    </div>
+
+    <div class="link">
+      👉 30-second fast forward:
+      <a href="https://youtu.be/d0EbSU_EeFg" target="_blank">[YouTube]</a>
+      <a href="https://www.bilibili.com/video/BV1vq4y1M7j1/" target="_blank">[Bilibili]</a>
+    </div>
+
+  </div>
+</div> -->
+<!-- === Result Section Ends === -->
+
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>
+@article{mo2025doodleassist,
+  title={DoodleAssist: Progressive Interactive Line Art Generation with Latent Distribution Alignment},
+  author={Mo, Haoran and Shen, Yulin and Simo-Serra, Edgar and Wang, Zeyu},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2025},
+  publisher={IEEE}
+}
+</pre>
+
+</div>
+<!-- === Reference Section Ends === -->
+
+
+</body>
+</html>
