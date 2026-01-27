@@ -6,4 +6,71 @@
 
 <img src='docs/figures/teaser3.png'>
 
+## Outline
+
+- [Setup](#setup)
+- [Inference](#inference)
+- [Citation](#citation)
+
+## Setup
+
+### 1. Install Environment via Anaconda (Recommended)
+```bash
+conda create -n doodleassist python==3.10.15
+conda activate doodleassist
+pip install -r requirements.txt
+```
+
+### 2. Model Preparation
+
+1) Checkpoint
+
+    - Download the checkpoint `controlnext-48000.bin` (13MB) [here](https://drive.google.com/file/d/1auWNemiIeChDxkUfPoGLBqdiF9AZhFM-/view?usp=sharing), and place it to `./checkpoint/controlnext-48000.bin`.
+
+
+2) Base model
+
+    - We use a Stable Diffusion 1.5 model fine-tuned on line art data on civitai.com. Download it (`foolkatGODOF_v3.safetensors`) [here](https://civitai.com/models/123631?modelVersionId=142306).
+    - Convert the safetensors to diffusers models using the following commands (they are placed in `./backbone/foolkatGODOF_v3/`):
+```bash
+git clone https://github.com/huggingface/diffusers.git
+cd diffusers
+python scripts/convert_original_stable_diffusion_to_diffusers.py \
+  --checkpoint_path your/path/to/foolkatGODOF_v3.safetensors \
+  --dump_path your/path/to/DoodleAssist/backbone/foolkatGODOF_v3/ \
+  --from_safetensors
+```
+
+
+## Inference
+
+We provide a Gradio demo that integrates an SVG editor ([SVG-edit](https://edit.svgomg.net/)) and our processing interface.
+
+### Linux Users
+
+Use the following commands:
+```bash
+python gradio_app.py
+```
+
+Then, open the `app.html` in the browser. Please use Google Chrome. 
+
+### Windows Users
+
+TBD
+
+
+## Citation
+
+If you use the code and models, please cite:
+
+```
+@article{mo2025doodleassist,
+  title={DoodleAssist: Progressive Interactive Line Art Generation with Latent Distribution Alignment},
+  author={Mo, Haoran and Shen, Yulin and Simo-Serra, Edgar and Wang, Zeyu},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2025},
+  publisher={IEEE}
+}
+```
 
