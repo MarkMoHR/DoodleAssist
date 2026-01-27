@@ -23,12 +23,12 @@ pip install -r requirements.txt
 
 ### 2. Model Preparation
 
-1) Checkpoint
+- Checkpoint
 
     - Download the checkpoint `controlnext-48000.bin` (13MB) [here](https://drive.google.com/file/d/1auWNemiIeChDxkUfPoGLBqdiF9AZhFM-/view?usp=sharing), and place it to `./checkpoint/controlnext-48000.bin`.
 
 
-2) Base model
+- Base model
 
     - We use a Stable Diffusion 1.5 model fine-tuned on line art data on civitai.com. Download it (`foolkatGODOF_v3.safetensors`) [here](https://civitai.com/models/123631?modelVersionId=142306).
     - Convert the safetensors to diffusers models using the following commands (they are placed in `./backbone/foolkatGODOF_v3/`):
@@ -48,23 +48,28 @@ We provide a Gradio demo that integrates an SVG editor ([SVG-edit](https://edit.
 
 ### Linux Users
 
-Use the following commands:
+Use the following command:
 ```bash
 python gradio_app.py
 ```
 
-Then, open the `app.html` in the browser. Please use Google Chrome. 
+Then, open the `app.html` in the browser. Please use **Google Chrome**. 
 
 ### Windows Users
 
-TBD
+Please select a directory for placing the outputs first. Then, use the following command:
+```bash
+python gradio_app.py --data_base your/selected/directory
+```
+
+Afterwards, open the `app.html` in the browser. Remember to save the SVG as `untitled.svg` to that selected directory.
 
 
 ## Citation
 
 If you use the code and models, please cite:
 
-```
+```bib
 @article{mo2025doodleassist,
   title={DoodleAssist: Progressive Interactive Line Art Generation with Latent Distribution Alignment},
   author={Mo, Haoran and Shen, Yulin and Simo-Serra, Edgar and Wang, Zeyu},
@@ -73,4 +78,8 @@ If you use the code and models, please cite:
   publisher={IEEE}
 }
 ```
+
+## Acknowledgements
+
+This work is built based on [ControlNeXt](https://github.com/JIA-Lab-research/ControlNeXt) and the dataset [SketchMan](https://github.com/LCXCUC/SketchMan2020). We would like to thank their authors.
 
