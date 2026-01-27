@@ -4,9 +4,9 @@ data/
 datas/
 dataset/
 datasets/
-model/
-models/
 testData/
+checkpoint/
+backbone/
 output/
 outputs/
 
