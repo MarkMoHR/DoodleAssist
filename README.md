@@ -44,9 +44,9 @@ python scripts/convert_original_stable_diffusion_to_diffusers.py \
 
 ## Inference
 
-To deploy the interface without the need for installing environment of web development, we provide a Gradio demo. It integrates an SVG editor ([SVG-edit](https://edit.svgomg.net/)) and our processing interface. 
+To deploy the interface without the need for installing a web development environment, we provide a Gradio demo. It integrates an SVG editor ([SVG-edit](https://edit.svgomg.net/)) and our processing interface. 
 
-It takes **~13GB** GPU memory, and can be deployed in a single-NVIDIA-4090 machine.
+It requires **~13GB** of GPU memory and can be deployed on a single NVIDIA 4090 machine.
 
 <img src='docs/figures/operations/0.png'>
 
@@ -59,7 +59,7 @@ python gradio_app.py
 
 Then, open the `app.html` in the browser. Please use **Google Chrome**. 
 
-Refer to the tutorial [here](docs/Operations.md) for how to use the interface.
+Refer to the tutorial [here](docs/Operations.md) for instructions on using the interface.
 
 ### Windows Users
 
@@ -70,7 +70,7 @@ python gradio_app.py --data_base your/selected/directory
 
 Afterwards, open the `app.html` in the browser. Remember to save the SVG as `untitled.svg` to that selected directory.
 
-Refer to the tutorial [here](docs/Operations.md) for how to use the interface.
+Refer to the tutorial [here](docs/Operations.md) for instructions on using the interface.
 
 
 ## Citation
