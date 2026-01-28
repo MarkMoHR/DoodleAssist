@@ -57,9 +57,7 @@ Use the following command:
 python gradio_app.py
 ```
 
-Then, open the `app.html` in the browser. Please use **Google Chrome**. 
-
-Refer to the tutorial [here](docs/Operations.md) for how to use the interface.
+Then, open the `app.html` in the browser. Please use **Google Chrome**. Refer to tutorial [here](docs/Operations.md) for how to use the interface.
 
 ### Windows Users
 
@@ -69,8 +67,6 @@ python gradio_app.py --data_base your/selected/directory
 ```
 
 Afterwards, open the `app.html` in the browser. Remember to save the SVG as `untitled.svg` to that selected directory.
-
-Refer to the tutorial [here](docs/Operations.md) for how to use the interface.
 
 
 ## Citation
