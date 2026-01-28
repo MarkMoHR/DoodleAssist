@@ -371,6 +371,25 @@ else:
 prev_sketch_base = os.path.join(args.gradio_data_base, 'prev-sketch')
 prev_gen_base = os.path.join(args.gradio_data_base, 'prev-gen')
 prev_mask_base = os.path.join(args.gradio_data_base, 'prev-mask')
+
+def remove_existing_files():
+    existing_dirs = [prev_sketch_base, prev_gen_base, prev_mask_base]
+    for existing_dir in existing_dirs:
+        if os.path.isdir(existing_dir):
+            shutil.rmtree(existing_dir)
+
+    existing_files = ['untitled.svg', 'untitled.png',
+                      'untitled-mask.png', 'untitled_manual_mask.png', 'untitled-mask_vis.png',
+                      'untitled_overlay.png',
+                      'prompt.txt']
+    for existing_file in existing_files:
+        existing_file_path = os.path.join(args.gradio_data_base, existing_file)
+        if os.path.exists(existing_file_path):
+            os.remove(existing_file_path)
+
+# Remove existing files
+remove_existing_files()
+
 os.makedirs(prev_sketch_base, exist_ok=True)
 os.makedirs(prev_gen_base, exist_ok=True)
 os.makedirs(prev_mask_base, exist_ok=True)
@@ -455,6 +474,7 @@ def process_mask_update_manual(input_data):
     image = input_data['image']
     manual_mask = input_data['mask'][:, :, 0]  # [0-BG, 255-FG]
 
+    auto_mask_path = os.path.join(args.gradio_data_base, 'untitled-mask.png')
     manual_mask_save_path = os.path.join(args.gradio_data_base, 'untitled_manual_mask.png')
     vis_mask_save_path = os.path.join(args.gradio_data_base, 'untitled-mask_vis.png')
 
@@ -466,7 +486,12 @@ def process_mask_update_manual(input_data):
     if np.sum(manual_mask) == 0:
         if os.path.exists(manual_mask_save_path):  # clear mode
             os.remove(manual_mask_save_path)
-            return gen_mask_vis(prev_gen_image_path, manual_mask, save_path=vis_mask_save_path)
+
+            # Show auto mask if existed
+            if os.path.exists(auto_mask_path):
+                return gen_mask_vis(prev_gen_image_path, auto_mask_path, save_path=vis_mask_save_path)
+            else:
+                return gen_mask_vis(prev_gen_image_path, manual_mask, save_path=vis_mask_save_path)
         return image
     else:
         # Save mask image for loading during genration
