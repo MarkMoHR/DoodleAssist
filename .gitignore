@@ -10,6 +10,8 @@ backbone/
 output/
 outputs/
 
+web_app_output/
+
 *.csv
 
 # temporary files

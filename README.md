@@ -57,9 +57,9 @@ Use the following command:
 python gradio_app.py
 ```
 
-Then, open the `app.html` in the browser. Please use **Google Chrome**. 
+Then, open the `gradio_interface/app.html` in the browser. Please use **Google Chrome**. 
 
-Refer to the tutorial [here](docs/Operations.md) for instructions on using the interface.
+Refer to the tutorial [here](docs/Gradio_Operations.md) for instructions on using the interface.
 
 ### Windows Users
 
@@ -68,9 +68,9 @@ Please select a directory for placing the outputs first. Then, use the following
 python gradio_app.py --data_base your/selected/directory
 ```
 
-Afterwards, open the `app.html` in the browser. Remember to save the SVG as `untitled.svg` to that selected directory.
+Afterwards, open the `gradio_interface/app.html` in the browser. Remember to save the SVG as `untitled.svg` to that selected directory.
 
-Refer to the tutorial [here](docs/Operations.md) for instructions on using the interface.
+Refer to the tutorial [here](docs/Gradio_Operations.md) for instructions on using the interface.
 
 
 ## Citation

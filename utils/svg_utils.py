@@ -143,3 +143,21 @@ def parse_svg(svg_file, is_merge=False):
 
     assert len(paths_list) > 0
     return (width, height), paths_list, ids_list, transformed_ids_list
+
+
+def parse_svg_path_count(svg_file):
+    tree = ET.parse(svg_file)
+    root = tree.getroot()
+
+    path_count = 0
+    for ei, elem in enumerate(root.iter()):
+        try:
+            _, tag_suffix = elem.tag.split('}')
+        except ValueError:
+            continue
+
+        if tag_suffix == 'path':
+            path_count += 1
+
+    assert path_count > 0
+    return path_count
