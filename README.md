@@ -77,12 +77,12 @@ Refer to the tutorial [here](docs/Gradio_Operations.md) for instructions on usin
 
 ## Web UI (Multi-GPU)
 
-We also provide a web interface which is deployed with 4 NVIDIA 4090 GPUs.
+We also provide a web interface, which is deployed on 4 NVIDIA 4090 GPUs.
 
 <img src='docs/figures/operations_web/0.png'>
 
 
-Use the following commands one by one to setup backend servers on each GPU:
+Use the following commands one by one to set up backend servers on each GPU:
 ```bash
 CUDA_VISIBLE_DEVICES=0 python web_app_server.py --port=9000
 CUDA_VISIBLE_DEVICES=1 python web_app_server.py --port=9001
@@ -90,7 +90,7 @@ CUDA_VISIBLE_DEVICES=2 python web_app_server.py --port=9002
 CUDA_VISIBLE_DEVICES=3 python web_app_server.py --port=9003
 ```
 
-Make sure to install the nodejs and npm environments first (ask AI :smile:). Then, setup the frontend web UI (Vue 2) using the following commands:
+Make sure to install the nodejs and npm environments first (ask AI :smile:). Then, set up the frontend web UI (Vue 2) using the following commands:
 ```bash
 cd web_interface/
 npm install
